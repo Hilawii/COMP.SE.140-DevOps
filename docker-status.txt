@@ -1,0 +1,10 @@
+CONTAINER ID   IMAGE                       COMMAND                 CREATED          STATUS          PORTS                                       NAMES
+06cdd12d6042   compse140-devops-service1   "python3 service1.py"   35 seconds ago   Up 34 seconds   0.0.0.0:8199->8199/tcp, :::8199->8199/tcp   compse140-devops-service1-1
+43719148cbfb   compse140-devops-service2   "/service2/app"         35 seconds ago   Up 35 seconds                                               compse140-devops-service2-1
+
+
+NETWORK ID     NAME                       DRIVER    SCOPE
+6c26fd651abc   bridge                     bridge    local
+3648434f946b   compse140-devops_default   bridge    local
+c20576f2d00c   host                       host      local
+b0b92688e6e4   none                       null      local
