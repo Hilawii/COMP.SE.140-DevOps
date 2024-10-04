@@ -3,5 +3,4 @@ WORKDIR /service1
 RUN apt-get update && apt-get install -y iproute2 procps
 RUN pip install --no-cache-dir flask requests
 COPY . .
-EXPOSE 8199
 ENTRYPOINT ["python3", "service1.py"]
