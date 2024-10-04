@@ -1,0 +1,14 @@
+services:
+  service1:
+    build:
+        context: .
+        dockerfile: service1_dockerfile
+    depends_on:
+      - service2
+    ports:
+      - 8199:8199
+
+  service2:
+    build:
+      context: .
+      dockerfile: service2_dockerfile

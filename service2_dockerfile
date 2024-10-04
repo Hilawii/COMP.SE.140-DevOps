@@ -1,0 +1,6 @@
+FROM golang:1.23
+WORKDIR /service2
+COPY . .
+RUN apt-get update && apt-get install -y iproute2 procps
+RUN go mod init service2 && go build -v -o /service2/app .
+ENTRYPOINT ["/service2/app"]

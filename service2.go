@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os/exec"
 	"strings"
+	"fmt"
 )
 
 func makeSystemInfo(w http.ResponseWriter, r *http.Request) {
@@ -15,7 +16,6 @@ func makeSystemInfo(w http.ResponseWriter, r *http.Request) {
 	sinceLastBoot, _ := exec.Command("uptime", "-p").Output()
 
 	systemInfo := map[string]string{
-		"service":                   "service2",
 		"ip address":                strings.TrimSpace(string(ipAddress)),
 		"list of running processes": strings.TrimSpace(string(runningProcesses)),
 		"available disk space":      strings.TrimSpace(string(diskSpace)),
@@ -28,5 +28,6 @@ func makeSystemInfo(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", makeSystemInfo)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	fmt.Println("Server started on port 8200")
+	log.Fatal(http.ListenAndServe(":8200", nil))
 }
