@@ -1,5 +1,7 @@
-Network
-Cpu
-Memory
-Disk
-Write more about this when time.
+Based on excerices outputs and findings while doing it, containers share:
+Network: Containers have their own internal ip address, but it's reachable with hosts ip address and port from outside of container.
+Disk: Containers share hosts disk recources. Output of DF is same than in host. 
+Kernel: Last boot output was same on both containers and host machine. Containers running processes also show up on hosts processes list same way. Containers don't have their own kernel, they relie on hosts kernel. 
+Cpu: Host and containers share same cpu recources. When you run containers it takes cpu from host.
+Memory: Containers share hosts memory recources.
+You can limit each of these, but I think on default it uses as much it needs.
