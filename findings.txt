@@ -1,5 +1,6 @@
-Network
-Cpu
-Memory
-Disk
-Write more about this when time.
+Based on excerices outputs and findings while doing it containers share:
+Network: Hosts ip and port and network recources and settings. 
+Cpu: Host and containers share same Cpu recources. When you run containers it takes cpu from host.
+Memory: Containers share hosts memory recources.
+Disk: Containers share hosts disk recources.
+You can limit each of these, but I think on default it uses as much it needs.
