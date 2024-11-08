@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Load Balancer Exercise</title>
+    <script>
+        async function send_request() {
+            try {
+                const response = await fetch('/request');
+                const data = await response.json();
+                document.getElementById("response_area").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById("response_area").textContent = `Error: ${error.message}`;
+            }
+        }
+
+        function stop() {
+            document.getElementById("response_area").textContent = "STOP button pressed!";
+        }
+    </script>
+</head>
+<body>
+    <button onclick="send_request()">REQUEST</button>
+    <button onclick="stop()">STOP</button>
+    <pre id="response_area"></pre>
+</body>
+</html>

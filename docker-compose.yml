@@ -5,10 +5,31 @@ services:
         dockerfile: service1_dockerfile
     depends_on:
       - service2
-    ports:
-      - 8199:8199
+    networks:
+        - service_network
+    deploy:
+      replicas: 3
 
   service2:
     build:
       context: .
       dockerfile: service2_dockerfile
+    networks:
+      - service_network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8198:8187"
+    depends_on:
+      - service1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./.htpasswd:/etc/nginx/.htpasswd:ro
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - service_network
+
+networks:
+    service_network:
+        driver: bridge

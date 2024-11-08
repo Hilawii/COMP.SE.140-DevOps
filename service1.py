@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask
 import requests
 import subprocess
@@ -26,6 +28,7 @@ def get_ssytem_info():
     combined = {"service1": service_1,
                 "service2": service_2}
 
+    time.sleep(2)
     return combined
 
 
