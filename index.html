@@ -6,7 +6,7 @@
     <script>
         async function send_request() {
             try {
-                const response = await fetch('/request');
+                const response = await fetch('/request', { method: 'GET' });
                 const data = await response.json();
                 document.getElementById("response_area").textContent = JSON.stringify(data, null, 2);
             } catch (error) {
@@ -14,8 +14,14 @@
             }
         }
 
-        function stop() {
-            document.getElementById("response_area").textContent = "STOP button pressed!";
+        async function stop() {
+            try {
+                const response = await fetch('/stop', { method: 'POST' });
+                const data = await response.json();
+                document.getElementById("response_area").textContent = data.message;
+            } catch (error) {
+                document.getElementById("response_area").textContent = `Error: ${error.message}`;
+            }
         }
     </script>
 </head>

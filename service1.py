@@ -1,6 +1,5 @@
 import time
-
-from flask import Flask
+from flask import Flask, jsonify
 import requests
 import subprocess
 
@@ -29,8 +28,16 @@ def get_ssytem_info():
                 "service2": service_2}
 
     time.sleep(2)
-    return combined
+    return jsonify(combined), 200
 
+
+@app.route("/stop", methods=["POST"])
+def stop_all_containers():
+    try:
+        subprocess.run(["docker", "compose", "down"], check=True)
+        return jsonify({"message": "services stopped"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
 
 
 if __name__ == "__main__":
